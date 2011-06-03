@@ -1,0 +1,10 @@
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.AddObject.resources
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.Form1.resources
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.Properties.Resources.resources
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\bin\Debug\Comcraft.exe
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\bin\Debug\Comcraft.pdb
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.exe
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.pdb

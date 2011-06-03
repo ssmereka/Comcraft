@@ -1,0 +1,11 @@
+<Resources>
+	<imgLocation>ABC</imgLocation>
+	<object>
+		<name>Stone</name>
+		<hex>01</hex>
+		<stack>64</stack>
+		<img>Stone.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+</Resources>
