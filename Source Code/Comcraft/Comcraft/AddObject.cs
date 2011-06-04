@@ -19,6 +19,10 @@ namespace Comcraft
         XmlNodeList sizeX;
         XmlNodeList sizeY;
         XmlNodeList stack;
+        int loadFailCount = 0;
+        int height;
+        int width;
+        ImageList imgs;
 
 
 
@@ -28,73 +32,104 @@ namespace Comcraft
             //DisplayObject();
         }
 
+        public AddObject(XmlDocument resXml)
+        {
+            InitializeComponent();
+            loadFailCount = LoadObjects(resXml);
+        }
         public AddObject(String resXmlLocation)
         {
             InitializeComponent();
-            float xSize, ySize;
-            String resLocation = "";
             XmlDocument resXml = new XmlDocument();
-            XmlNodeList objects = resXml.GetElementsByTagName("Object");
-            for (int y = 0; y < objects.Count; y++)
-            {
-                String obj = objects[y].InnerXml;
-                
-            }
             resXml.Load(resXmlLocation);
+            loadFailCount = LoadObjects(resXml);
+        }
+
+        private int LoadObjects(XmlDocument resXml)
+        {
+            int failCount = 0;
+            float xSize, ySize;
+            height = 0;//AddObject.ActiveForm.Size.Height;
+            width = 0;//AddObject.ActiveForm.Size.Width;
+
+
             name = resXml.GetElementsByTagName("name");
             hex = resXml.GetElementsByTagName("hex");
             img = resXml.GetElementsByTagName("img");
             sizeX = resXml.GetElementsByTagName("sizex");
             sizeY = resXml.GetElementsByTagName("sizey");
             stack = resXml.GetElementsByTagName("stack");
+            XmlNodeList resLoc = resXml.GetElementsByTagName("imgLocation");
 
-            MessageBox.Show(stack.Count.ToString());//stack[0].Value.ToString());
-            XmlNode resLoc = resXml.GetElementById("imgLocation");
 
-            //resLocation = resLoc.Value;
-            foreach (XmlNode node in name)
+            imgs = new ImageList();
+
+            for (int x = 0; x < name.Count; x++)
             {
-                int x = 0;
-                float.TryParse(sizeX[x].Value, out xSize);
-                float.TryParse(sizeY[x].Value, out ySize);
-                DisplayObject(resLocation + @"\" + img[x].Value,
-                              node.Value,
-                              Convert.ToInt32(hex[x].Value),
-                              Convert.ToInt32(stack[x].Value),
-                              xSize,
-                              ySize);
+                float.TryParse(sizeX[x].InnerText, out xSize);
+                float.TryParse(sizeY[x].InnerText, out ySize);
+                if (DisplayObject(resLoc[0].InnerText + @"\" + img[x].InnerText,
+                                name[x].InnerText,
+                                Convert.ToInt32(hex[x].InnerText),
+                                Convert.ToInt32(stack[x].InnerText),
+                                xSize, ySize))
+                    failCount++;
             }
-           /* for (int x = 0; x < name.Count; x++)
-            {
-                float.TryParse(sizeX[x].Value, out xSize);
-                float.TryParse(sizeY[x].Value, out ySize);
-                DisplayObject(resLocation + @"\" + img[x].Value, 
-                              name[x].Value,
-                              Convert.ToInt32(hex[x].Value),
-                              Convert.ToInt32(stack[x].Value),
-                              xSize,
-                              ySize);
-            } */
+            return failCount;
         }
+
 
         private Boolean DisplayObject(String bitmapURL, String name, int hex, int stack, float xSize, float ySize)
         {
             //Image img = Image.FromFile(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
             //Bitmap bm = new Bitmap(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
-            Bitmap bitmap = new Bitmap(bitmapURL);
-            bitmap = ResizeBitmap(bitmap, 50, 50);
-            //this.Controls.Add(bm);
 
-            PictureBox pic = new PictureBox();
-            pic.Image = bitmap;
-            //pic.ImageLocation = @"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png";
-            pic.Location = new Point(SearchCoB.Left + 1, SearchCoB.Top);
-            pic.Size = new Size(50, 50);
-            pic.Visible = true;
-            //pic.BorderStyle = BorderStyle.Fixed3D;
-            this.Controls.Add(pic);
-            DragMoveExtensions.EnableDragMove(pic, true);
-            return true;
+
+            if ((bitmapURL == "") || (bitmapURL == null) || (!File.Exists(bitmapURL)))
+                return false;
+            else
+            {
+                Bitmap bitmap = new Bitmap(bitmapURL);
+                bitmap = ResizeBitmap(bitmap, 50, 50);
+                //this.Controls.Add(bm);
+
+                int index = ObjectLV.Items.Count;
+                imgs.Images.Add(index.ToString(), bitmap);
+                ObjectLV.LargeImageList = imgs;
+
+                ObjectLV.BeginUpdate();
+                ListViewItem item = new ListViewItem(name);
+                item.ImageIndex = index;
+                ObjectLV.Items.Add(item);
+
+                /*PictureBox pic = new PictureBox();
+                pic.Image = bitmap;
+                //pic.ImageLocation = @"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png";
+                pic.Location = new Point(height,width);
+                pic.Size = new Size(50, 50);
+                pic.Visible = true;
+                //pic.BorderStyle = BorderStyle.Fixed3D;
+                this.Controls.Add(pic);
+                DragMoveExtensions.EnableDragMove(pic, true); */
+
+                //ObjectLV.Items.Add(name);
+                //ObjectLV.Items[ObjectLV.Items.Count - 1].StateImageIndex = 1;
+                
+                //ObjectLV.StateImageList = imgs;
+
+                //ObjectLV.BeginUpdate();
+                //ObjectLV.LargeImageList = imgs;
+
+
+                //if (height + 50 > AddObject.ActiveForm.Size.Height)
+                //{
+                //    height = 0;
+                //    width += 50;
+               // }
+               // else
+                    height += 50;
+                return true;
+            }
         }
 
         public Bitmap ResizeBitmap(Bitmap bitmap, float width, float height)

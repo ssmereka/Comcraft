@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.SearchCoB = new System.Windows.Forms.ComboBox();
+            this.ObjectLV = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // SearchCoB
@@ -39,11 +40,20 @@
             this.SearchCoB.Size = new System.Drawing.Size(686, 24);
             this.SearchCoB.TabIndex = 0;
             // 
+            // ObjectLV
+            // 
+            this.ObjectLV.Location = new System.Drawing.Point(12, 12);
+            this.ObjectLV.Name = "ObjectLV";
+            this.ObjectLV.Size = new System.Drawing.Size(686, 375);
+            this.ObjectLV.TabIndex = 1;
+            this.ObjectLV.UseCompatibleStateImageBehavior = false;
+            // 
             // AddObject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 429);
+            this.Controls.Add(this.ObjectLV);
             this.Controls.Add(this.SearchCoB);
             this.Name = "AddObject";
             this.Text = "AddObject";
@@ -54,5 +64,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox SearchCoB;
+        private System.Windows.Forms.ListView ObjectLV;
     }
 }
