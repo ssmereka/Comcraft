@@ -2,12 +2,12 @@
 	<type>Commands</type>
 	<imgLocation>C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\commands</imgLocation>
 	<object>
-		<name>Make Operator</name>
-		<description>An Op, or operator, has access to certain admin commands used to moderate a multiplayer server.</description>
+		<name>Operator</name>
+		<description>Give access to some admin commands</description>
 		<command>/op</command>
-		<userName option="1">0</username>
+		<username option="1">0</username>
 		<privilege>3</privilege>
-		<img>.png</img>
+		<img>Operator.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
@@ -15,11 +15,11 @@
 		<name>Give Item</name>
 		<command>/give</command>
 		<description></description>
-		<userName option="1">0</username>
+		<username option="1">0</username>
 		<item option="2"></item>
 		<value option="3"></value>
 		<privilege>2</privilege>
-		<img>.png</img>
+		<img>Give.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
@@ -27,10 +27,10 @@
 		<name>Teleport</name>
 		<command>/tp</command>
 		<description></description>
-		<userName option="1">0</username>
-		<userName option="2"></username>
+		<username option="1">0</username>
+		<username option="2"></username>
 		<privilege>2</privilege>
-		<img>.png</img>
+		<img>Teleport.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>

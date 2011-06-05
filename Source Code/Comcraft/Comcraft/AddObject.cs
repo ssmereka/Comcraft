@@ -11,6 +11,8 @@ using System.Xml;
 
 namespace Comcraft
 {
+    enum Type {items, commands, users, privilege, none};
+
     public partial class AddObject : Form
     {
         #region Class Variables
@@ -20,10 +22,15 @@ namespace Comcraft
         private XmlNodeList sizeX;              //Int size of X value of image
         private XmlNodeList sizeY;              //Int size of Y value of image
         private XmlNodeList stack;              //Int value of how many objects can stack
+        private XmlNodeList username;
+        private XmlNodeList privilege;
+        private XmlNodeList id;
         private String objectTypeStr = "";      //Type of Objects being loaded
         private String resourceImgLoc;          //Resourse Image Location
         private ImageList imgs;                 //Store images to be loaded into the listview
         private SortOrder listViewSort = SortOrder.Ascending;       //Stores how the listview will be sorted
+        private String errorText = "";
+        private Boolean error = false;
         #endregion
 
         #region Constructors
@@ -38,10 +45,11 @@ namespace Comcraft
             try
             {
                 LoadObjects(resXml);
+                DisplayError();
             }
             catch
             {
-                MessageBox.Show("Error loading the resource XML file");
+                MessageBox.Show("Error with the resource XML file");
                 this.Text = "Add Objects - Error loading XML file";
             }
         }
@@ -54,6 +62,7 @@ namespace Comcraft
             {
                 resXml.Load(resXmlLocation);
                 LoadObjects(resXml);
+                DisplayError();
             }
             catch
             {
@@ -63,34 +72,77 @@ namespace Comcraft
         }
         #endregion
 
+        private void DisplayError()
+        {
+            if (error)              //Update title based on errors
+            {
+                this.Text = "Add " + objectTypeStr + " - " + errorText;
+                error = false;
+            }
+            else
+                this.Text = "Add " + objectTypeStr;
+        }
+
+        private void LoadNodes(String typeStr, XmlDocument resXml)
+        {
+            if (typeStr.ToLower() == "items")
+                LoadNodes(Type.items, resXml);
+            else if (typeStr.ToLower() == "commands")
+                LoadNodes(Type.commands, resXml);
+            else if (typeStr.ToLower() == "users")
+                LoadNodes(Type.users, resXml);
+            else if (typeStr.ToLower() == "privilege")
+                LoadNodes(Type.privilege, resXml);
+            else
+                LoadNodes(Type.none, null);  //Type not found
+        }
+
+        private void LoadNodes(Type type, XmlDocument resXml)
+        {
+            switch(type)
+            {
+                case Type.items:
+                    name = resXml.GetElementsByTagName("name");
+                    dec = resXml.GetElementsByTagName("dec");
+                    stack = resXml.GetElementsByTagName("stack");
+                    break;
+                case Type.users:
+                    id = resXml.GetElementsByTagName("id");
+                    username = resXml.GetElementsByTagName("username");
+                    privilege = resXml.GetElementsByTagName("privilege");
+                    img = resXml.GetElementsByTagName("img");
+                    sizeX = resXml.GetElementsByTagName("sizex");
+                    sizeY = resXml.GetElementsByTagName("sizey");
+                    break;
+                case Type.commands:
+                    break;
+                default:
+                    error = true;
+                    errorText = "XML type is invalid";
+                    break;
+            }
+        }
+
         private void LoadObjects(XmlDocument resXml)
         {
             int loadFailCount = 0;
-            float xSize, ySize;
             imgs = new ImageList();
 
             //Load nodes for processing
+            resourceImgLoc = resXml.GetElementsByTagName("imgLocation")[0].InnerText;
+            objectTypeStr = resXml.GetElementsByTagName("type")[0].InnerText;
             name = resXml.GetElementsByTagName("name");
-            dec = resXml.GetElementsByTagName("dec");
             img = resXml.GetElementsByTagName("img");
             sizeX = resXml.GetElementsByTagName("sizex");
             sizeY = resXml.GetElementsByTagName("sizey");
-            stack = resXml.GetElementsByTagName("stack");
-            
-            resourceImgLoc = resXml.GetElementsByTagName("imgLocation")[0].InnerText;
-            objectTypeStr = resXml.GetElementsByTagName("type")[0].InnerText;
+            LoadNodes(objectTypeStr, resXml);
 
             for (int x = 0; x < name.Count; x++)        //Add each item to the listview and combo box
             {
                 try
                 {
-                    float.TryParse(sizeX[x].InnerText, out xSize);
-                    float.TryParse(sizeY[x].InnerText, out ySize);
-                    if (DisplayObject(resourceImgLoc + @"\" + img[x].InnerText,
-                                    name[x].InnerText,
-                                    Convert.ToInt32(dec[x].InnerText),
-                                    Convert.ToInt32(stack[x].InnerText),
-                                    xSize, ySize))
+                    if (DisplayObject(resourceImgLoc + @"\" + img[x].InnerText, name[x].InnerText, 
+                                        Convert.ToInt32(sizeX[x].InnerText), Convert.ToInt32(sizeY[x].InnerText)))
                     {
                         if (!SearchCoB.Items.Contains(name[x].InnerText))
                             SearchCoB.Items.Add(name[x].InnerText);
@@ -107,12 +159,13 @@ namespace Comcraft
             ObjectLV.Sorting = listViewSort;    //Sort listview
 
             if (loadFailCount > 0)              //Update title based on errors
-                this.Text = "Add " + objectTypeStr + " - Loaded with " + loadFailCount.ToString() + " Errors";
-            else
-                this.Text = "Add " + objectTypeStr;
+            {
+                error = true;
+                errorText = "Loaded with " + loadFailCount.ToString() + " Errors";
+            }
         }
 
-        private Boolean DisplayObject(String bitmapURL, String name, int dec, int stack, float xSize, float ySize)  //Add object to listview
+        private Boolean DisplayObject(String bitmapURL, String name, int xSize, int ySize)  //Add object to listview
         {
             if ((bitmapURL == "") || (bitmapURL == null) || (!File.Exists(bitmapURL)))  //Check preconditions
                 return false;
@@ -122,7 +175,7 @@ namespace Comcraft
 
                 int index = ObjectLV.Items.Count;
                 imgs.Images.Add(index.ToString(), bitmap);
-                imgs.ImageSize = new Size(50, 50);              //Set image size for listview
+                imgs.ImageSize = new Size(xSize/3, ySize/3);              //Set image size for listview
                 ObjectLV.LargeImageList = imgs;                 
 
                 ObjectLV.BeginUpdate();

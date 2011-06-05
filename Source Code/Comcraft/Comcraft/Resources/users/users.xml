@@ -1,32 +1,22 @@
 <Resources>
 	<type>Users</type>
 	<imgLocation>C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\users</imgLocation>
-	<privilegeOption>All</privilegeOption>
-	<privilegeOption>Guest</privilegeOption>
-	<privilegeOption>Member</privilegeOption>
-	<privilegeOption>Designer</privilegeOption>
-	<privilegeOption>Architect</privilegeOption>
-	<privilegeOption>Moderator</privilegeOption>
-	<privilegeOption>Admin</privilegeOption>
-	<privilegeOption>Executive</privilegeOption>
-	<privilegeOption>Owner</privilegeOption>
-	<privilegeOption>Op</privilegeOption>
 	<object>
 		<id>0</id>
 		<name>Scott Smereka</name>
 		<username>Masterdebaterz</username>
-		<privilege>Op</privilege>
+		<privilege>2</privilege>
 		<img>Masterdebaterz.png</img>
 		<sizex>150</sizex>
-		<sizey>150</sizey>
+		<sizey>300</sizey>
 	</object>
 	<object>
 		<id>1</id>
 		<name>Jer</name>
 		<username>Jer_</username>
-		<privilege>Admin</privilege>
+		<privilege>3</privilege>
 		<img>Jer_.png</img>
 		<sizex>150</sizex>
-		<sizey>150</sizey>
+		<sizey>300</sizey>
 	</object>
 </Resources>

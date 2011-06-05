@@ -117,6 +117,7 @@
             this.CommandsMMI.Name = "CommandsMMI";
             this.CommandsMMI.Size = new System.Drawing.Size(153, 24);
             this.CommandsMMI.Text = "Commands";
+            this.CommandsMMI.Click += new System.EventHandler(this.CommandsMMI_Click);
             // 
             // ItemsMMI
             // 
@@ -130,6 +131,7 @@
             this.UsersMMI.Name = "UsersMMI";
             this.UsersMMI.Size = new System.Drawing.Size(153, 24);
             this.UsersMMI.Text = "Users";
+            this.UsersMMI.Click += new System.EventHandler(this.UsersMMI_Click);
             // 
             // toolStripSeparator2
             // 
