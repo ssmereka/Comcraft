@@ -11,9 +11,27 @@ namespace Comcraft
 {
     public partial class BuildCommand : Form
     {
-        public BuildCommand()
+        private Main.AddObjectForm addObject;
+
+        public BuildCommand(Main form)
         {
             InitializeComponent();
+            addObject = new Main.AddObjectForm(form.getAddObjectForm);
+        }
+
+        private void itemsBtn_Click(object sender, EventArgs e)
+        {
+            addObject(Type.items).Show();
+        }
+
+        private void usersBtn_Click(object sender, EventArgs e)
+        {
+            addObject(Type.users).Show();
+        }
+
+        private void commandBtn_Click(object sender, EventArgs e)
+        {
+            addObject(Type.commands).Show();
         }
     }
 }

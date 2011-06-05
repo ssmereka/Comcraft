@@ -11,8 +11,6 @@ using System.Xml;
 
 namespace Comcraft
 {
-    enum Type {items, commands, users, privilege, none};
-
     public partial class AddObject : Form
     {
         #region Class Variables
@@ -200,6 +198,17 @@ namespace Comcraft
             return newBitmap;
         }
         private void ObjectLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddObject_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+
+        private void AddObject_Load(object sender, EventArgs e)
         {
 
         }

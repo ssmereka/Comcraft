@@ -76,12 +76,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(99, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // ExitMMI
             // 
             this.ExitMMI.Name = "ExitMMI";
-            this.ExitMMI.Size = new System.Drawing.Size(102, 24);
+            this.ExitMMI.Size = new System.Drawing.Size(152, 24);
             this.ExitMMI.Text = "Exit";
             this.ExitMMI.Click += new System.EventHandler(this.ExitMMI_Click);
             // 
@@ -157,18 +157,18 @@
             // HowToMMI
             // 
             this.HowToMMI.Name = "HowToMMI";
-            this.HowToMMI.Size = new System.Drawing.Size(127, 24);
+            this.HowToMMI.Size = new System.Drawing.Size(152, 24);
             this.HowToMMI.Text = "How to";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(124, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // AboutMMI
             // 
             this.AboutMMI.Name = "AboutMMI";
-            this.AboutMMI.Size = new System.Drawing.Size(127, 24);
+            this.AboutMMI.Size = new System.Drawing.Size(152, 24);
             this.AboutMMI.Text = "About";
             // 
             // StatusStrip
@@ -203,6 +203,7 @@
             this.Opacity = 0.8D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Comcraft";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.StatusStrip.ResumeLayout(false);
