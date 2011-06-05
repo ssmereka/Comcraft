@@ -30,21 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
-            this.ViewMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.ItemsMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.HelpMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.OptionsMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsersMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.CommandsMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.BuildCommandsMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutMMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.CommandsMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemsMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.OptionsMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.HowToMMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.AboutMMI = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainMenu.SuspendLayout();
@@ -64,25 +64,6 @@
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
-            // ViewMMI
-            // 
-            this.ViewMMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CommandsMMI,
-            this.ItemsMMI,
-            this.UsersMMI,
-            this.toolStripSeparator2,
-            this.OptionsMMI});
-            this.ViewMMI.Name = "ViewMMI";
-            this.ViewMMI.Size = new System.Drawing.Size(53, 24);
-            this.ViewMMI.Text = "View";
-            // 
-            // ItemsMMI
-            // 
-            this.ItemsMMI.Name = "ItemsMMI";
-            this.ItemsMMI.Size = new System.Drawing.Size(153, 24);
-            this.ItemsMMI.Text = "Items";
-            this.ItemsMMI.Click += new System.EventHandler(this.ItemsMMI_Click);
-            // 
             // FileMMI
             // 
             this.FileMMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -95,47 +76,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(99, 6);
             // 
             // ExitMMI
             // 
             this.ExitMMI.Name = "ExitMMI";
-            this.ExitMMI.Size = new System.Drawing.Size(152, 24);
+            this.ExitMMI.Size = new System.Drawing.Size(102, 24);
             this.ExitMMI.Text = "Exit";
             this.ExitMMI.Click += new System.EventHandler(this.ExitMMI_Click);
-            // 
-            // HelpMMI
-            // 
-            this.HelpMMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.HowToMMI,
-            this.toolStripSeparator3,
-            this.AboutMMI});
-            this.HelpMMI.Name = "HelpMMI";
-            this.HelpMMI.Size = new System.Drawing.Size(53, 24);
-            this.HelpMMI.Text = "Help";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(150, 6);
-            // 
-            // OptionsMMI
-            // 
-            this.OptionsMMI.Name = "OptionsMMI";
-            this.OptionsMMI.Size = new System.Drawing.Size(153, 24);
-            this.OptionsMMI.Text = "Options";
-            // 
-            // UsersMMI
-            // 
-            this.UsersMMI.Name = "UsersMMI";
-            this.UsersMMI.Size = new System.Drawing.Size(153, 24);
-            this.UsersMMI.Text = "Users";
-            // 
-            // CommandsMMI
-            // 
-            this.CommandsMMI.Name = "CommandsMMI";
-            this.CommandsMMI.Size = new System.Drawing.Size(153, 24);
-            this.CommandsMMI.Text = "Commands";
             // 
             // EditMMI
             // 
@@ -150,23 +98,76 @@
             this.BuildCommandsMMI.Name = "BuildCommandsMMI";
             this.BuildCommandsMMI.Size = new System.Drawing.Size(191, 24);
             this.BuildCommandsMMI.Text = "Build Commands";
+            this.BuildCommandsMMI.Click += new System.EventHandler(this.BuildCommandsMMI_Click);
             // 
-            // AboutMMI
+            // ViewMMI
             // 
-            this.AboutMMI.Name = "AboutMMI";
-            this.AboutMMI.Size = new System.Drawing.Size(152, 24);
-            this.AboutMMI.Text = "About";
+            this.ViewMMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CommandsMMI,
+            this.ItemsMMI,
+            this.UsersMMI,
+            this.toolStripSeparator2,
+            this.OptionsMMI});
+            this.ViewMMI.Name = "ViewMMI";
+            this.ViewMMI.Size = new System.Drawing.Size(53, 24);
+            this.ViewMMI.Text = "View";
             // 
-            // toolStripSeparator3
+            // CommandsMMI
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.CommandsMMI.Name = "CommandsMMI";
+            this.CommandsMMI.Size = new System.Drawing.Size(153, 24);
+            this.CommandsMMI.Text = "Commands";
+            // 
+            // ItemsMMI
+            // 
+            this.ItemsMMI.Name = "ItemsMMI";
+            this.ItemsMMI.Size = new System.Drawing.Size(153, 24);
+            this.ItemsMMI.Text = "Items";
+            this.ItemsMMI.Click += new System.EventHandler(this.ItemsMMI_Click);
+            // 
+            // UsersMMI
+            // 
+            this.UsersMMI.Name = "UsersMMI";
+            this.UsersMMI.Size = new System.Drawing.Size(153, 24);
+            this.UsersMMI.Text = "Users";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(150, 6);
+            // 
+            // OptionsMMI
+            // 
+            this.OptionsMMI.Name = "OptionsMMI";
+            this.OptionsMMI.Size = new System.Drawing.Size(153, 24);
+            this.OptionsMMI.Text = "Options";
+            // 
+            // HelpMMI
+            // 
+            this.HelpMMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HowToMMI,
+            this.toolStripSeparator3,
+            this.AboutMMI});
+            this.HelpMMI.Name = "HelpMMI";
+            this.HelpMMI.Size = new System.Drawing.Size(53, 24);
+            this.HelpMMI.Text = "Help";
             // 
             // HowToMMI
             // 
             this.HowToMMI.Name = "HowToMMI";
-            this.HowToMMI.Size = new System.Drawing.Size(152, 24);
+            this.HowToMMI.Size = new System.Drawing.Size(127, 24);
             this.HowToMMI.Text = "How to";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(124, 6);
+            // 
+            // AboutMMI
+            // 
+            this.AboutMMI.Name = "AboutMMI";
+            this.AboutMMI.Size = new System.Drawing.Size(127, 24);
+            this.AboutMMI.Text = "About";
             // 
             // StatusStrip
             // 
@@ -175,6 +176,7 @@
             this.StatusStrip.Location = new System.Drawing.Point(0, 26);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.Size = new System.Drawing.Size(213, 25);
+            this.StatusStrip.SizingGrip = false;
             this.StatusStrip.TabIndex = 1;
             this.StatusStrip.Text = "statusStrip1";
             // 
@@ -191,10 +193,13 @@
             this.ClientSize = new System.Drawing.Size(213, 51);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.mainMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
+            this.MaximizeBox = false;
             this.Name = "Main";
-            this.Opacity = 0.7D;
+            this.Opacity = 0.8D;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Comcraft";
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();

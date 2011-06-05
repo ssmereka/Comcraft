@@ -13,6 +13,7 @@ namespace Comcraft
     public partial class Main : Form
     {
         private AddObject addObjectForm;
+        BuildCommand buildCommandForm;
         public Main()
         {
             InitializeComponent();
@@ -30,6 +31,13 @@ namespace Comcraft
             if(addObjectForm == null)
                 addObjectForm = new AddObject(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\items.xml");
             addObjectForm.Show();
+        }
+
+        private void BuildCommandsMMI_Click(object sender, EventArgs e)
+        {
+            if (buildCommandForm == null)
+                buildCommandForm = new BuildCommand();
+            buildCommandForm.Show();
         }
     }
 }

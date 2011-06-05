@@ -1,0 +1,40 @@
+<Resources>
+	<type>Privilege</type>
+	<imgLocation>C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\privilege</imgLocation>
+	<option>
+		<id>0</id>
+		<name>All</name>
+		<command>all</command>
+		<rank>0</rank>
+		<img></img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	<option>
+	<option>
+		<id>1</id>
+		<name>Guest</name>
+		<command>guest</command>
+		<rank>1</rank>
+		<img></img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	<option>
+	<option>
+		<id>2</id>
+		<name>Operator</name>
+		<command>Op</command>
+		<rank>2</rank>
+		<img></img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	<option>
+	<option>
+		<id>3</id>
+		<name>Admin</name>
+		<command>admin</command>
+		<rank>3</rank>
+		<img></img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	<option>
+</Resources>
