@@ -13,131 +13,124 @@ namespace Comcraft
 {
     public partial class AddObject : Form
     {
-        XmlNodeList name;
-        XmlNodeList dec;
-        XmlNodeList img;
-        XmlNodeList sizeX;
-        XmlNodeList sizeY;
-        XmlNodeList stack;
-        int loadFailCount = 0;
-        int height;
-        int width;
-        ImageList imgs;
+        #region Class Variables
+        private XmlNodeList name;               //String Name of objects
+        private XmlNodeList dec;                //Int value of object
+        private XmlNodeList img;                //String Image name of object
+        private XmlNodeList sizeX;              //Int size of X value of image
+        private XmlNodeList sizeY;              //Int size of Y value of image
+        private XmlNodeList stack;              //Int value of how many objects can stack
+        private String objectTypeStr = "";      //Type of Objects being loaded
+        private String resourceImgLoc;          //Resourse Image Location
+        private ImageList imgs;                 //Store images to be loaded into the listview
+        private SortOrder listViewSort = SortOrder.Ascending;       //Stores how the listview will be sorted
+        #endregion
 
-
-
+        #region Constructors
         public AddObject()
         {
             InitializeComponent();
-            //DisplayObject();
         }
 
         public AddObject(XmlDocument resXml)
         {
             InitializeComponent();
-            loadFailCount = LoadObjects(resXml);
+            try
+            {
+                LoadObjects(resXml);
+            }
+            catch
+            {
+                MessageBox.Show("Error loading the resource XML file");
+                this.Text = "Add Objects - Error loading XML file";
+            }
         }
+
         public AddObject(String resXmlLocation)
         {
             InitializeComponent();
             XmlDocument resXml = new XmlDocument();
-            resXml.Load(resXmlLocation);
-            loadFailCount = LoadObjects(resXml);
+            try
+            {
+                resXml.Load(resXmlLocation);
+                LoadObjects(resXml);
+            }
+            catch
+            {
+                MessageBox.Show("Error loading the resource XML file (" + resXmlLocation + ")");
+                this.Text = "Add Objects - Error loading XML file";
+            }
         }
+        #endregion
 
-        private int LoadObjects(XmlDocument resXml)
+        private void LoadObjects(XmlDocument resXml)
         {
-            int failCount = 0;
+            int loadFailCount = 0;
             float xSize, ySize;
-            height = 0;//AddObject.ActiveForm.Size.Height;
-            width = 0;//AddObject.ActiveForm.Size.Width;
+            imgs = new ImageList();
 
-
+            //Load nodes for processing
             name = resXml.GetElementsByTagName("name");
             dec = resXml.GetElementsByTagName("dec");
             img = resXml.GetElementsByTagName("img");
             sizeX = resXml.GetElementsByTagName("sizex");
             sizeY = resXml.GetElementsByTagName("sizey");
             stack = resXml.GetElementsByTagName("stack");
-            XmlNodeList resLoc = resXml.GetElementsByTagName("imgLocation");
+            
+            resourceImgLoc = resXml.GetElementsByTagName("imgLocation")[0].InnerText;
+            objectTypeStr = resXml.GetElementsByTagName("type")[0].InnerText;
 
-
-            imgs = new ImageList();
-
-            for (int x = 0; x < name.Count; x++)
+            for (int x = 0; x < name.Count; x++)        //Add each item to the listview and combo box
             {
-                float.TryParse(sizeX[x].InnerText, out xSize);
-                float.TryParse(sizeY[x].InnerText, out ySize);
-                if (DisplayObject(resLoc[0].InnerText + @"\" + img[x].InnerText,
-                                name[x].InnerText,
-                                Convert.ToInt32(dec[x].InnerText),
-                                Convert.ToInt32(stack[x].InnerText),
-                                xSize, ySize))
+                try
                 {
-                    if(!SearchCoB.Items.Contains(name[x].InnerText))
-                        SearchCoB.Items.Add(name[x].InnerText);
+                    float.TryParse(sizeX[x].InnerText, out xSize);
+                    float.TryParse(sizeY[x].InnerText, out ySize);
+                    if (DisplayObject(resourceImgLoc + @"\" + img[x].InnerText,
+                                    name[x].InnerText,
+                                    Convert.ToInt32(dec[x].InnerText),
+                                    Convert.ToInt32(stack[x].InnerText),
+                                    xSize, ySize))
+                    {
+                        if (!SearchCoB.Items.Contains(name[x].InnerText))
+                            SearchCoB.Items.Add(name[x].InnerText);
+                    }
+                    else
+                        loadFailCount++;        //Failed to add item to listview
                 }
-                else
-                    failCount++;
-
+                catch
+                {
+                    loadFailCount++;        //Failed to add item to listview
+                }
             }
 
-            ObjectLV.Sorting = SortOrder.Ascending;
-            return failCount;
+            ObjectLV.Sorting = listViewSort;    //Sort listview
+
+            if (loadFailCount > 0)              //Update title based on errors
+                this.Text = "Add " + objectTypeStr + " - Loaded with " + loadFailCount.ToString() + " Errors";
+            else
+                this.Text = "Add " + objectTypeStr;
         }
 
-
-        private Boolean DisplayObject(String bitmapURL, String name, int dec, int stack, float xSize, float ySize)
+        private Boolean DisplayObject(String bitmapURL, String name, int dec, int stack, float xSize, float ySize)  //Add object to listview
         {
-            //Image img = Image.FromFile(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
-            //Bitmap bm = new Bitmap(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
-
-
-            if ((bitmapURL == "") || (bitmapURL == null) || (!File.Exists(bitmapURL)))
+            if ((bitmapURL == "") || (bitmapURL == null) || (!File.Exists(bitmapURL)))  //Check preconditions
                 return false;
             else
             {
                 Bitmap bitmap = new Bitmap(bitmapURL);
-                //bitmap = ResizeBitmap(bitmap, 50, 50);
-                //this.Controls.Add(bm);
 
                 int index = ObjectLV.Items.Count;
                 imgs.Images.Add(index.ToString(), bitmap);
-                imgs.ImageSize = new Size(50, 50);
-                ObjectLV.LargeImageList = imgs;
-
+                imgs.ImageSize = new Size(50, 50);              //Set image size for listview
+                ObjectLV.LargeImageList = imgs;                 
 
                 ObjectLV.BeginUpdate();
                 ListViewItem item = new ListViewItem(name);
                 item.ImageIndex = index;
                 ObjectLV.Items.Add(item);
+                ObjectLV.EndUpdate();
 
-                /*PictureBox pic = new PictureBox();
-                pic.Image = bitmap;
-                //pic.ImageLocation = @"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png";
-                pic.Location = new Point(height,width);
-                pic.Size = new Size(50, 50);
-                pic.Visible = true;
-                //pic.BorderStyle = BorderStyle.Fixed3D;
-                this.Controls.Add(pic);
-                DragMoveExtensions.EnableDragMove(pic, true); */
-
-                //ObjectLV.Items.Add(name);
-                //ObjectLV.Items[ObjectLV.Items.Count - 1].StateImageIndex = 1;
-                
-                //ObjectLV.StateImageList = imgs;
-
-                //ObjectLV.BeginUpdate();
-                //ObjectLV.LargeImageList = imgs;
-
-
-                //if (height + 50 > AddObject.ActiveForm.Size.Height)
-                //{
-                //    height = 0;
-                //    width += 50;
-               // }
-               // else
-                    height += 50;
                 return true;
             }
         }
@@ -153,7 +146,6 @@ namespace Comcraft
                 g.DrawImage(bitmap, point.X, point.Y, width, height);
             return newBitmap;
         }
-
         private void ObjectLV_SelectedIndexChanged(object sender, EventArgs e)
         {
 

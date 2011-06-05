@@ -1,4 +1,5 @@
 <Resources>
+	<type>Items</type>
 	<imgLocation>C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items</imgLocation>
 	<object>
 		<name>Stone</name>
