@@ -52,6 +52,9 @@
     <Compile Include="AddObject.Designer.cs">
       <DependentUpon>AddObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="AutoCompleteComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DragMoveExtensions.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

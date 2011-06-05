@@ -14,7 +14,7 @@ namespace Comcraft
     public partial class AddObject : Form
     {
         XmlNodeList name;
-        XmlNodeList hex;
+        XmlNodeList dec;
         XmlNodeList img;
         XmlNodeList sizeX;
         XmlNodeList sizeY;
@@ -54,7 +54,7 @@ namespace Comcraft
 
 
             name = resXml.GetElementsByTagName("name");
-            hex = resXml.GetElementsByTagName("hex");
+            dec = resXml.GetElementsByTagName("dec");
             img = resXml.GetElementsByTagName("img");
             sizeX = resXml.GetElementsByTagName("sizex");
             sizeY = resXml.GetElementsByTagName("sizey");
@@ -70,16 +70,24 @@ namespace Comcraft
                 float.TryParse(sizeY[x].InnerText, out ySize);
                 if (DisplayObject(resLoc[0].InnerText + @"\" + img[x].InnerText,
                                 name[x].InnerText,
-                                Convert.ToInt32(hex[x].InnerText),
+                                Convert.ToInt32(dec[x].InnerText),
                                 Convert.ToInt32(stack[x].InnerText),
                                 xSize, ySize))
+                {
+                    if(!SearchCoB.Items.Contains(name[x].InnerText))
+                        SearchCoB.Items.Add(name[x].InnerText);
+                }
+                else
                     failCount++;
+
             }
+
+            ObjectLV.Sorting = SortOrder.Ascending;
             return failCount;
         }
 
 
-        private Boolean DisplayObject(String bitmapURL, String name, int hex, int stack, float xSize, float ySize)
+        private Boolean DisplayObject(String bitmapURL, String name, int dec, int stack, float xSize, float ySize)
         {
             //Image img = Image.FromFile(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
             //Bitmap bm = new Bitmap(@"C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items\Stone.png");
@@ -90,12 +98,14 @@ namespace Comcraft
             else
             {
                 Bitmap bitmap = new Bitmap(bitmapURL);
-                bitmap = ResizeBitmap(bitmap, 50, 50);
+                //bitmap = ResizeBitmap(bitmap, 50, 50);
                 //this.Controls.Add(bm);
 
                 int index = ObjectLV.Items.Count;
                 imgs.Images.Add(index.ToString(), bitmap);
+                imgs.ImageSize = new Size(50, 50);
                 ObjectLV.LargeImageList = imgs;
+
 
                 ObjectLV.BeginUpdate();
                 ListViewItem item = new ListViewItem(name);
@@ -142,6 +152,11 @@ namespace Comcraft
             using (Graphics g = Graphics.FromImage((Image)newBitmap))
                 g.DrawImage(bitmap, point.X, point.Y, width, height);
             return newBitmap;
+        }
+
+        private void ObjectLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

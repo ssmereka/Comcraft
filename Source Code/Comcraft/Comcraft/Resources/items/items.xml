@@ -2,161 +2,337 @@
 	<imgLocation>C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\Resources\items</imgLocation>
 	<object>
 		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<dec>01</dec>
 		<stack>64</stack>
 		<img>Stone.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Dirt</name>
+		<dec>03</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Dirt.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Sand</name>
+		<dec>12</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Sand.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Sandstone</name>
+		<dec>24</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Sandstone.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Gravel</name>
+		<dec>13</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Gravel.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<name>Monster Spawner</name>
+		<dec>52</dec>
+		<stack>0</stack>
+		<img>MonsterSpawner.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Clay Block</name>
+		<dec>82</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>ClayBlock.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Obsidian</name>
+		<dec>49</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Obsidian.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Snow</name>
+		<dec>78</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
-		<sizex>150</sizex>
-		<sizey>150</sizey>
-	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
-		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Snow.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
 	<object>
-		<name>Stone</name>
-		<hex>01</hex>
+		<name>Cobblestone</name>
+		<dec>04</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>Cobblestone.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
-    <object>
-		<name>Stone</name>
-		<hex>01</hex>
+	<object>
+		<name>Moss Stone</name>
+		<dec>48</dec>
 		<stack>64</stack>
-		<img>Stone.png</img>
+		<img>MossStone.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Ice</name>
+		<dec>79</dec>
+		<stack>64</stack>
+		<img>Ice.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Bedrock</name>
+		<dec>12</dec>
+		<stack>64</stack>
+		<img>Bedrock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Wooden Plank</name>
+		<dec>05</dec>
+		<stack>64</stack>
+		<img>WoodenPlank.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Brick Block</name>
+		<dec>45</dec>
+		<stack>64</stack>
+		<img>BrickBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Glass</name>
+		<dec>20</dec>
+		<stack>64</stack>
+		<img>Glass.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Bookshelf</name>
+		<dec>47</dec>
+		<stack>64</stack>
+		<img>Bookshelf.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Wool - White</name>
+		<dec>35</dec>
+		<stack>64</stack>
+		<img>WhiteWool.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Snow Block</name>
+		<dec>80</dec>
+		<stack>64</stack>
+		<img>SnowBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Iron Block</name>
+		<dec>42</dec>
+		<stack>64</stack>
+		<img>IronBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Gold Block</name>
+		<dec>41</dec>
+		<stack>64</stack>
+		<img>GoldBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Diamond Block</name>
+		<dec>57</dec>
+		<stack>64</stack>
+		<img>DiamondBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Lapis Lazuli Block</name>
+		<dec>22</dec>
+		<stack>64</stack>
+		<img>LapisLazuliBlock.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Ladder</name>
+		<dec>65</dec>
+		<stack>64</stack>
+		<img>Ladder.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Fence</name>
+		<dec>85</dec>
+		<stack>64</stack>
+		<img>Fence.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Farmland</name>
+		<dec>60</dec>
+		<stack>64</stack>
+		<img>Farmland.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Jack-O-Lantern</name>
+		<dec>91</dec>
+		<stack>64</stack>
+		<img>JackOLantern.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Crafting Table</name>
+		<dec>58</dec>
+		<stack>64</stack>
+		<img>CraftingTable.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Furnace</name>
+		<dec>61</dec>
+		<stack>64</stack>
+		<img>Furnace.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Chest</name>
+		<dec>54</dec>
+		<stack>64</stack>
+		<img>Chest.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Jukebox</name>
+		<dec>84</dec>
+		<stack>64</stack>
+		<img>Jukebox.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>TNT</name>
+		<dec>46</dec>
+		<stack>64</stack>
+		<img>TNT.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Cake</name>
+		<dec>354</dec>
+		<stack>64</stack>
+		<img>Cake.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Bed</name>
+		<dec>355</dec>
+		<stack>64</stack>
+		<img>Bed.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Rail</name>
+		<dec>66</dec>
+		<stack>64</stack>
+		<img>Rail.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Powered Rail</name>
+		<dec>27</dec>
+		<stack>64</stack>
+		<img>PoweredRail.gif</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Detector Rail</name>
+		<dec>28</dec>
+		<stack>64</stack>
+		<img>DetectorRail.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Lever</name>
+		<dec>69</dec>
+		<stack>64</stack>
+		<img>Lever.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Stone Button</name>
+		<dec>77</dec>
+		<stack>64</stack>
+		<img>StoneButton.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Trapdoor</name>
+		<dec>96</dec>
+		<stack>64</stack>
+		<img>Trapdoor.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Dispenser</name>
+		<dec>23</dec>
+		<stack>64</stack>
+		<img>Dispenser.png</img>
+		<sizex>150</sizex>
+		<sizey>150</sizey>
+	</object>
+	<object>
+		<name>Note Block</name>
+		<dec>25</dec>
+		<stack>64</stack>
+		<img>NoteBlock.png</img>
 		<sizex>150</sizex>
 		<sizey>150</sizey>
 	</object>
