@@ -1,0 +1,26 @@
+<settings>
+	<profile default="true">
+		<userid>0</userid>
+		<command keybinding="Alt + Numpad1">
+			<option0>/give</option0>
+			<option1>Masterdebaterz</option1>
+			<option2>46</option2>
+			<option3>64</option3>
+			<custom></custom>
+		</command>
+		<command keybinding="Alt + Numpad2">
+			<option0>/tp</option0>
+			<option1>Masterdebaterz</option1>
+			<option2>Jer_</option2>
+			<option3></option3>
+			<custom></custom>
+		</command>
+		<command keybinding="Alt + Numpad3">
+			<option0>/op</option0>
+			<option1>Masterdebaterz</option1>
+			<option2></option2>
+			<option3></option3>
+			<custom></custom>
+		</command>
+	</profile>
+</settings>

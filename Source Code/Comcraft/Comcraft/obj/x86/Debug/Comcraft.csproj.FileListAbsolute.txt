@@ -9,3 +9,4 @@ C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x
 C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.pdb
 C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.BuildCommand.resources
 C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.Main.resources
+C:\Users\Scott\Documents\Repository\Comcraft\Source Code\Comcraft\Comcraft\obj\x86\Debug\Comcraft.AboutBox.resources

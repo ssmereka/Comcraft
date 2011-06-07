@@ -40,17 +40,18 @@
             this.keybindingTxt = new System.Windows.Forms.TextBox();
             this.keybindingLbl = new System.Windows.Forms.Label();
             this.keybindingLV = new System.Windows.Forms.ListView();
-            this.Keys = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.itemsBtn = new System.Windows.Forms.Button();
             this.usersBtn = new System.Windows.Forms.Button();
             this.commandBtn = new System.Windows.Forms.Button();
-            this.itemsBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
+            this.Status = new System.Windows.Forms.StatusStrip();
+            this.statusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.commandPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.option1PB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.option2PB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.option3PB)).BeginInit();
+            this.Status.SuspendLayout();
             this.SuspendLayout();
             // 
             // commandCoB
@@ -131,6 +132,10 @@
             this.keybindingTxt.Name = "keybindingTxt";
             this.keybindingTxt.Size = new System.Drawing.Size(150, 22);
             this.keybindingTxt.TabIndex = 9;
+            this.keybindingTxt.TextChanged += new System.EventHandler(this.keybindingTxt_TextChanged);
+            this.keybindingTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keybindingTxt_KeyDown);
+            this.keybindingTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.keybindingTxt_KeyPress);
+            this.keybindingTxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keybindingTxt_KeyUp);
             // 
             // keybindingLbl
             // 
@@ -143,37 +148,37 @@
             // 
             // keybindingLV
             // 
-            this.keybindingLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Keys});
             this.keybindingLV.Location = new System.Drawing.Point(12, 106);
+            this.keybindingLV.MultiSelect = false;
             this.keybindingLV.Name = "keybindingLV";
             this.keybindingLV.Size = new System.Drawing.Size(150, 146);
             this.keybindingLV.TabIndex = 17;
             this.keybindingLV.UseCompatibleStateImageBehavior = false;
-            // 
-            // splitter1
-            // 
-            this.splitter1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 257);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitter1.Size = new System.Drawing.Size(796, 56);
-            this.splitter1.TabIndex = 18;
-            this.splitter1.TabStop = false;
+            this.keybindingLV.View = System.Windows.Forms.View.List;
+            this.keybindingLV.SelectedIndexChanged += new System.EventHandler(this.keybindingLV_SelectedIndexChanged);
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(636, 269);
+            this.saveBtn.Location = new System.Drawing.Point(636, 258);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(148, 32);
             this.saveBtn.TabIndex = 19;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             // 
+            // itemsBtn
+            // 
+            this.itemsBtn.Location = new System.Drawing.Point(480, 258);
+            this.itemsBtn.Name = "itemsBtn";
+            this.itemsBtn.Size = new System.Drawing.Size(150, 32);
+            this.itemsBtn.TabIndex = 21;
+            this.itemsBtn.Text = "Items";
+            this.itemsBtn.UseVisualStyleBackColor = true;
+            this.itemsBtn.Click += new System.EventHandler(this.itemsBtn_Click);
+            // 
             // usersBtn
             // 
-            this.usersBtn.Location = new System.Drawing.Point(324, 269);
+            this.usersBtn.Location = new System.Drawing.Point(324, 258);
             this.usersBtn.Name = "usersBtn";
             this.usersBtn.Size = new System.Drawing.Size(150, 32);
             this.usersBtn.TabIndex = 23;
@@ -183,7 +188,7 @@
             // 
             // commandBtn
             // 
-            this.commandBtn.Location = new System.Drawing.Point(168, 269);
+            this.commandBtn.Location = new System.Drawing.Point(168, 258);
             this.commandBtn.Name = "commandBtn";
             this.commandBtn.Size = new System.Drawing.Size(150, 32);
             this.commandBtn.TabIndex = 22;
@@ -191,36 +196,43 @@
             this.commandBtn.UseVisualStyleBackColor = true;
             this.commandBtn.Click += new System.EventHandler(this.commandBtn_Click);
             // 
-            // itemsBtn
-            // 
-            this.itemsBtn.Location = new System.Drawing.Point(480, 269);
-            this.itemsBtn.Name = "itemsBtn";
-            this.itemsBtn.Size = new System.Drawing.Size(150, 32);
-            this.itemsBtn.TabIndex = 21;
-            this.itemsBtn.Text = "Items";
-            this.itemsBtn.UseVisualStyleBackColor = true;
-            this.itemsBtn.Click += new System.EventHandler(this.itemsBtn_Click);
-            // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(12, 269);
+            this.AddBtn.Location = new System.Drawing.Point(12, 258);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(150, 32);
             this.AddBtn.TabIndex = 24;
             this.AddBtn.Text = "Add";
             this.AddBtn.UseVisualStyleBackColor = true;
             // 
+            // Status
+            // 
+            this.Status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLbl});
+            this.Status.Location = new System.Drawing.Point(0, 298);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(796, 25);
+            this.Status.SizingGrip = false;
+            this.Status.TabIndex = 25;
+            this.Status.Text = "statusStrip1";
+            // 
+            // statusLbl
+            // 
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(89, 20);
+            this.statusLbl.Text = "Command:  ";
+            // 
             // BuildCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 313);
+            this.ClientSize = new System.Drawing.Size(796, 323);
+            this.Controls.Add(this.Status);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.usersBtn);
             this.Controls.Add(this.commandBtn);
             this.Controls.Add(this.itemsBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.keybindingLV);
             this.Controls.Add(this.keybindingLbl);
             this.Controls.Add(this.keybindingTxt);
@@ -239,6 +251,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.option1PB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.option2PB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.option3PB)).EndInit();
+            this.Status.ResumeLayout(false);
+            this.Status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,12 +272,12 @@
         private System.Windows.Forms.TextBox keybindingTxt;
         private System.Windows.Forms.Label keybindingLbl;
         private System.Windows.Forms.ListView keybindingLV;
-        private System.Windows.Forms.ColumnHeader Keys;
-        private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button itemsBtn;
         private System.Windows.Forms.Button usersBtn;
         private System.Windows.Forms.Button commandBtn;
-        private System.Windows.Forms.Button itemsBtn;
         private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.StatusStrip Status;
+        private System.Windows.Forms.ToolStripStatusLabel statusLbl;
     }
 }

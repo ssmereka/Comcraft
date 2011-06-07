@@ -76,12 +76,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(99, 6);
             // 
             // ExitMMI
             // 
             this.ExitMMI.Name = "ExitMMI";
-            this.ExitMMI.Size = new System.Drawing.Size(152, 24);
+            this.ExitMMI.Size = new System.Drawing.Size(102, 24);
             this.ExitMMI.Text = "Exit";
             this.ExitMMI.Click += new System.EventHandler(this.ExitMMI_Click);
             // 
@@ -170,6 +170,7 @@
             this.AboutMMI.Name = "AboutMMI";
             this.AboutMMI.Size = new System.Drawing.Size(152, 24);
             this.AboutMMI.Text = "About";
+            this.AboutMMI.Click += new System.EventHandler(this.AboutMMI_Click);
             // 
             // StatusStrip
             // 
