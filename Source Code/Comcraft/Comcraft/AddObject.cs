@@ -13,6 +13,8 @@ namespace Comcraft
 {
     public partial class AddObject : Form
     {
+
+        //TODO:  Remake into data structure
         #region Class Variables
         private XmlNodeList name;               //String Name of objects
         private XmlNodeList dec;                //Int value of object

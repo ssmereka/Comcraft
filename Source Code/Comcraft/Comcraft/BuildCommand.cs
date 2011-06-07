@@ -13,64 +13,81 @@ namespace Comcraft
 {
     public partial class BuildCommand : Form
     {
+        #region Class Variables
         private Main.AddObjectForm addObject;
-        private List<Command> commands;
+        private Form itemsForm;
+        private Form usersForm;
+        private Form commandsForm;
 
+        private List<Command> commands;
+        private String errorStr;
+        #endregion
+
+        #region Constructors
         public BuildCommand(Main form, String setXmlLocation)
         {
             InitializeComponent();
             XmlDocument setXml = new XmlDocument();
-            addObject = new Main.AddObjectForm(form.getAddObjectForm);
-            try
-            {
-                setXml.Load(setXmlLocation);
-                LoadUserProfile(setXml);
+            try { setXml.Load(setXmlLocation); }   //Try to load XML
+            catch 
+            { 
                 DisplayError();
+                errorStr = "Error loading Settings XML file"; 
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Error loading the User Settings XML file (" + setXmlLocation + ")");
-                this.Text = "Build Commands - Error loading XML file";
-            }
-        }
-
-        private void DisplayError()
-        {
+            try { Setup(form, setXml); }   //Load rest of settings
+            catch { DisplayError(); }
         }
 
         public BuildCommand(Main form, XmlDocument setXml)
         {
             InitializeComponent();
+            try { Setup(form, setXml); }   //Load rest of settings
+            catch { DisplayError(); }
+        }
+        #endregion
+
+        private void Setup( Main form, XmlDocument setXml)
+        {
             addObject = new Main.AddObjectForm(form.getAddObjectForm);
-            try
+            try { LoadUserProfile(setXml); }
+            catch { errorStr = "Error loading user profile"; }
+
+            try { itemsForm = addObject(Type.items); }
+            catch { errorStr = "Error loading items xml or form"; }
+
+            try { usersForm = addObject(Type.items); }
+            catch { errorStr = "Error loading users xml or form"; }
+
+            try { commandsForm = addObject(Type.items); }
+            catch { errorStr = "Error loading commands xml or form"; }
+        }
+
+        private void DisplayError()
+        {
+            if (errorStr != "")
             {
-                LoadUserProfile(setXml);
-                DisplayError();
-            }
-            catch
-            {
-                MessageBox.Show("Error with the user settings XML file");
-                this.Text = "Build Commands - Error loading XML file";
+                this.Text = "Build Command - " + errorStr;  //Display error
+                errorStr = "";  //Reset error
             }
         }
 
         private void itemsBtn_Click(object sender, EventArgs e)
         {
-            addObject(Type.items).Show();
+            //addObject(Type.items).Show();
+            itemsForm.Show();
         }
 
         private void usersBtn_Click(object sender, EventArgs e)
         {
-            addObject(Type.users).Show();
+            //addObjectUsers(Type.users).Show();
+            usersForm.Show();
         }
 
         private void commandBtn_Click(object sender, EventArgs e)
         {
-            addObject(Type.commands).Show();
+            //addObjectCommands(Type.commands).Show();
+            commandsForm.Show();
         }
-
-
 
         private void LoadUserProfile(XmlDocument setXml)
         {
@@ -85,7 +102,6 @@ namespace Comcraft
             {
                 item = new ListViewItem();  //Must create new item everytime or information will be lost or not added properly
                 temp = new Command();       //Ditto
-                MessageBox.Show(node.OuterXml);
                 keybindingLV.BeginUpdate();
                 temp.Option0 = node.SelectSingleNode("option0").InnerText;
                 temp.Option1 = node.SelectSingleNode("option1").InnerText;
