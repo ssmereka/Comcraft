@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Comcraft
 {
-    public enum Type { items, commands, users, privilege, none };
+    
 
     public partial class Main : Form
     {
